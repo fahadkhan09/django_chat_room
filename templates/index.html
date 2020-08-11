@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <h2>welcome</h2>
+    {% endif %}
+<a href ="http://127.0.0.1:8000/create_room"> Create Room</a>
+
+{{ rooms.id }}
+{% endblock %}
+
+
+{% block extra_body %}
+    <script>
+        $(document).ready(function () {
+
+            var socket = new WebSocket('ws://' + window.location.host + '/chat/');
+            socket.onopen = function () {
+                console.log("Connected to chat socket");
+            };
+            socket.onclose = function () {
+                console.log("Disconnected from chat socket");
+            }
+
+        });
+    </script>
+{% endblock %}
