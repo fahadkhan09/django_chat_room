@@ -89,7 +89,6 @@ class ChatConsumer(AsyncJsonWebsocketConsumer):
             }
         )
 
-
     async def chat_join(self, event):
 
         await self.send_json(
